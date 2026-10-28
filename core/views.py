@@ -353,3 +353,19 @@ def fetch_issues_trigger(request):
         {"ok": True, "started": True, "pages": pages, "mode": "async"},
         status=202,
     )
+
+
+def llms_txt(request):
+    """Serve a short, structured llms.txt description for AI search and crawlers."""
+    text = (
+        "# OpenToAll\n"
+        "> Find an open source issue you can actually clone and finish. "
+        "Built for developers who need a realistic first contribution.\n\n"
+        "## Core Pages\n"
+        "- / : Home page with platform overview and curated issues\n"
+        "- /explore/ : Search and browse filtered beginner-friendly issues\n"
+        "- /leaderboard/ : Community contributors and open source milestones\n\n"
+        "## Optional\n"
+        "- /accounts/login/ : GitHub OAuth login\n"
+    )
+    return HttpResponse(text, content_type="text/plain; charset=utf-8")
